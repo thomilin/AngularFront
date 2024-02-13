@@ -24,4 +24,10 @@ export class ApiService {
     return this.httpClient.post<any>(this.urlCrearTarea, tarea);
   }
 
+
+
+  eliminarTarea(id: number): Observable<any>{
+    return this.httpClient.delete(`${this.urlCrearTarea}/${id}`);
+  }
+
 }

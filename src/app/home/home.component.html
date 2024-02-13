@@ -14,9 +14,9 @@
     <td>{{item.nombre}}</td>
     <td>{{item.completado}}</td>
     <td>
-      <button class="btn btn-danger" >Eliminar</button>
+      <button (click)="eliminarTarea(item.id)" class="btn btn-danger">Eliminar</button>
       &nbsp;
-      <button class="btn btn-secondary">Editar</button>
+      <button (click)="editarTarea(item.id)" class="btn btn-secondary">Editar</button>
     </td>
   </tr>
   </tbody>

@@ -1,5 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../service/api.service";
+import {Tarea} from "../tarea";
+
+
 
 @Component({
   selector: 'app-home',
@@ -20,7 +23,15 @@ export class HomeComponent implements OnInit {
   llenarListaTarea(){
     this.apiService.getListadeTareas().subscribe(tarea => {
       this.tarea = tarea;
-    })
+    });
   }
+
+  eliminarTarea(id:number){
+    this.apiService.eliminarTarea(id).subscribe(dato => {
+      console.log(dato);
+      this.llenarListaTarea();
+    });
+  }
+
 
 }
