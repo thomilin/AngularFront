@@ -5,13 +5,21 @@
     <th>Id</th>
     <th>Nombre</th>
     <th>Completado</th>
+    <th>Acciones</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let item of data">
+  <tr *ngFor="let item of tarea">
     <td>{{item.id}}</td>
     <td>{{item.nombre}}</td>
     <td>{{item.completado}}</td>
+    <td>
+      <button class="btn btn-danger" >Eliminar</button>
+      &nbsp;
+      <button class="btn btn-secondary">Editar</button>
+    </td>
   </tr>
   </tbody>
 </table>
+<br><br>
+

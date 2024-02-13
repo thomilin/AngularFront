@@ -8,19 +8,18 @@ import {ApiService} from "../service/api.service";
 })
 export class HomeComponent implements OnInit {
 
-  data: any[] = [];
+  tarea: any[] = [];
 
   constructor(private apiService: ApiService) {
   }
 
   ngOnInit() {
-    this.llenarData();
+    this.llenarListaTarea();
   }
 
-  llenarData(){
-    this.apiService.getData().subscribe( data => {
-      this.data = data;
-      console.log(this.data);
+  llenarListaTarea(){
+    this.apiService.getListadeTareas().subscribe(tarea => {
+      this.tarea = tarea;
     })
   }
 
