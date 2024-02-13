@@ -24,10 +24,15 @@ export class ApiService {
     return this.httpClient.post<any>(this.urlCrearTarea, tarea);
   }
 
-
-
   eliminarTarea(id: number): Observable<any>{
     return this.httpClient.delete(`${this.urlCrearTarea}/${id}`);
   }
 
+  put(id: number, tarea: Tarea) {
+
+  }
+
+  obtenerTarea(id: number): Observable<Tarea> {
+    return this.httpClient.get<Tarea>(this.urlCrearTarea+id);
+  }
 }

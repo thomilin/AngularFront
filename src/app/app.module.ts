@@ -20,7 +20,7 @@ import { EditarTareaComponent } from './editar-tarea/editar-tarea.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     provideClientHydration()

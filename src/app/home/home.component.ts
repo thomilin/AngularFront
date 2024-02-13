@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ApiService} from "../service/api.service";
 import {Tarea} from "../tarea";
+import {Router} from "@angular/router";
 
 
 
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   tarea: any[] = [];
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private router:Router) {
   }
 
   ngOnInit() {
@@ -24,6 +25,10 @@ export class HomeComponent implements OnInit {
     this.apiService.getListadeTareas().subscribe(tarea => {
       this.tarea = tarea;
     });
+  }
+
+  editarTarea(id:number){
+    this.router.navigate([""+id])
   }
 
   eliminarTarea(id:number){
