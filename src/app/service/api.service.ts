@@ -28,11 +28,12 @@ export class ApiService {
     return this.httpClient.delete(`${this.urlCrearTarea}/${id}`);
   }
 
-  put(id: number, tarea: Tarea) {
-
-  }
 
   obtenerTarea(id: number): Observable<Tarea> {
-    return this.httpClient.get<Tarea>(this.urlCrearTarea+id);
+    return this.httpClient.get<Tarea>(`${this.urlCrearTarea}/${id}`);
+  }
+
+  editarTarea(id: number, tarea: Tarea): Observable<any> {
+    return this.httpClient.put(`${this.urlCrearTarea}/${id}`, tarea);
   }
 }

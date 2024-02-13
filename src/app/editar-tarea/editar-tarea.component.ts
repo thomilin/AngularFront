@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Tarea} from "../tarea";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ApiService} from "../service/api.service";
 
 @Component({
@@ -15,23 +15,31 @@ export class EditarTareaComponent implements OnInit {
     nombre: "",
     completado: true
   }
-  constructor(private service:ApiService, private actRoute:ActivatedRoute) {
-    this.actRoute.params.subscribe((dato)=>{
-      this.editar(dato['id']);
-    })
+  constructor(private service:ApiService, private actRoute:ActivatedRoute, private router: Router) {
   }
 
   ngOnInit() {
+    this.actRoute.params.subscribe(params => {
+      const id = +params['id'];
+      this.obtenerTarea(id);
+    });
   }
 
-  editar(id: number){
-    this.service.put(id, this.tarea);
+
+  editarTarea() {
+    this.service.editarTarea(this.tarea.id, this.tarea).subscribe(
+      () => {
+        console.log('Tarea editada correctamente');
+        this.router.navigate(['/home']);
+      },
+    );
   }
 
-  obtenerTarea(id:number){
-    this.service.obtenerTarea(id).subscribe((dato)=>{
-      this.tarea = dato;
-    })
+  obtenerTarea(id: number) {
+    this.service.obtenerTarea(id).subscribe(
+      tarea => this.tarea = tarea,
+      error => console.error('Error al obtener la tarea:', error)
+    );
   }
 
 }
